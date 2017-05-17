@@ -27,7 +27,7 @@ public class Piracle extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "點開信箱按鈕會出現的message", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
