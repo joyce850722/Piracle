@@ -2,23 +2,24 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/nav_setting"
-        android:icon="@drawable/ic_menu_manage"
-        android:title="設定" />
+
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_open"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_folder_open_black_24dp"
             android:title="開啟" />
         <item
             android:id="@+id/nav_recently"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_assignment_black_24dp"
             android:title="最近使用檔案" />
         <item
             android:id="@+id/nav_cloud"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_cloud_black_24dp"
             android:title="雲端硬碟" />
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="設定" />
     </group>
 
     <item
@@ -27,19 +28,19 @@
         <menu>
             <item
                 android:id="@+id/nav_about"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_face_black_24dp"
                 android:title="關於" />
             <item
                 android:id="@+id/nav_readme"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_help_black_24dp"
                 android:title="說明" />
             <item
                 android:id="@+id/nav_donate"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_menu_send"
                 android:title="如何贊助我們" />
             <item
                 android:id="@+id/nav_invite"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_menu_share"
                 android:title="邀請朋友" />
         </menu>
     </item>
