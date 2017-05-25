@@ -83,7 +83,8 @@ public class Piracle extends AppCompatActivity
         if (id == R.id.nav_setting) {
             // Handle the camera action
         } else if (id == R.id.nav_open) {
-
+            MagicFileChooser choose = new MagicFileChooser();
+            choose.showFileChooser("*/*",null,false,false);
         } else if (id == R.id.nav_recently) {
 
         } else if (id == R.id.nav_cloud) {
