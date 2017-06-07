@@ -6,8 +6,10 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.SimpleAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -50,6 +52,43 @@ public class fileList extends AppCompatActivity {
             }
         });
        initData();
+        initView();
+    }
+
+    private void initView() {
+        simpleAdapter = new SimpleAdapter(this,
+                filesList, R.layout.activity_file_list, new String[]{IMG_ITEM, NAME_ITEM},
+                new int[]{R.id.image, R.id.text});
+        listView = (ListView) findViewById(R.id.list_view);
+        listView.setAdapter(simpleAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String target = paths.get(position);
+                if(target.equals(ROOT)){
+                    nowPath = paths.get(position);
+                    getFileDirectory(ROOT);
+                    simpleAdapter.notifyDataSetChanged();
+                } else if(target.equals(PRE_LEVEL)){
+                    nowPath = paths.get(position);
+                    getFileDirectory(new File(nowPath).getParent());
+                    simpleAdapter.notifyDataSetChanged();
+                } else {
+                    File file = new File(target);
+                    if (file.canRead()) {
+                        if (file.isDirectory()) {
+                            nowPath = paths.get(position);
+                            getFileDirectory(paths.get(position));
+                            simpleAdapter.notifyDataSetChanged();
+                        } else{
+                            //Toast.makeText(fileList.this, R.string.is_not_directory, Toast.LENGTH_SHORT).show();
+                        }
+                    } else{
+                        //Toast.makeText(fileList.this, R.string.can_not_read, Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
     }
 
     private void initData() {
@@ -94,3 +133,4 @@ public class fileList extends AppCompatActivity {
         }
     }
 }
+
