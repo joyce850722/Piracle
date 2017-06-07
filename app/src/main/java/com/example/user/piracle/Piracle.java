@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.content.Intent;
 
 public class Piracle extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -83,8 +84,14 @@ public class Piracle extends AppCompatActivity
         if (id == R.id.nav_setting) {
             // Handle the camera action
         } else if (id == R.id.nav_open) {
-            MagicFileChooser choose = new MagicFileChooser();
-            choose.showFileChooser("*/*",null,false,false);
+            //初始化Intent物件
+            Intent intent = new Intent();
+            //從MainActivity 到Main2Activity
+            intent.setClass(Piracle.this , fileList.class);
+            //開啟Activity
+            startActivity(intent);
+            //MagicFileChooser choose = new MagicFileChooser();
+            //choose.showFileChooser("*/*",null,false,false);
         } else if (id == R.id.nav_recently) {
 
         } else if (id == R.id.nav_cloud) {
