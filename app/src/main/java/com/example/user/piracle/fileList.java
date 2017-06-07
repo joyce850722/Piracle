@@ -51,7 +51,7 @@ public class fileList extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-       initData();
+        initData();
         initView();
     }
 
