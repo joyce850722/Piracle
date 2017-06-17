@@ -1,15 +1,15 @@
 package com.example.user.piracle;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.SimpleAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
+
+import com.example.user.piracle.R;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -29,35 +29,23 @@ public class fileList extends AppCompatActivity {
     private List<String> paths;
     private File[] files;
     private Map<String, Object> filesMap;
-
-    private SimpleAdapter simpleAdapter;
-    private ListView listView;
-    private String nowPath;
     private int[] fileImg = {
             R.drawable.directory,
             R.drawable.file};
+    private SimpleAdapter simpleAdapter;
+    private ListView listView;
+    private String nowPath;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_file_list);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         initData();
         initView();
     }
 
     private void initView() {
         simpleAdapter = new SimpleAdapter(this,
-                filesList, R.layout.activity_file_list, new String[]{IMG_ITEM, NAME_ITEM},
+                filesList, R.layout.simple_adapter, new String[]{IMG_ITEM, NAME_ITEM},
                 new int[]{R.id.image, R.id.text});
         listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(simpleAdapter);
@@ -81,10 +69,16 @@ public class fileList extends AppCompatActivity {
                             getFileDirectory(paths.get(position));
                             simpleAdapter.notifyDataSetChanged();
                         } else{
-                            //Toast.makeText(fileList.this, R.string.is_not_directory, Toast.LENGTH_SHORT).show();
+                            //初始化Intent物件
+                            Intent intent = new Intent();
+                            //從MainActivity 到Main2Activity
+                            intent.setClass(fileList.this , openppt.class);
+                            //開啟Activity
+                            startActivity(intent);
+                            Toast.makeText(fileList.this, "已選取檔案", Toast.LENGTH_SHORT).show();
                         }
                     } else{
-                        //Toast.makeText(fileList.this, R.string.can_not_read, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(fileList.this, "無法讀取", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -100,9 +94,10 @@ public class fileList extends AppCompatActivity {
 
     private void getFileDirectory(String path){
         filesList.clear();
+        paths.clear();
         if(!path.equals(ROOT)){
             //回根目錄
-            HashMap filesMap = new HashMap<>();
+            filesMap = new HashMap<>();
             names.add(ROOT);
             paths.add(FIRST_ITEM, ROOT);
             filesMap.put(IMG_ITEM, fileImg[0]);
@@ -133,4 +128,3 @@ public class fileList extends AppCompatActivity {
         }
     }
 }
-

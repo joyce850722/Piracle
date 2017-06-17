@@ -90,8 +90,6 @@ public class Piracle extends AppCompatActivity
             intent.setClass(Piracle.this , fileList.class);
             //開啟Activity
             startActivity(intent);
-            //MagicFileChooser choose = new MagicFileChooser();
-            //choose.showFileChooser("*/*",null,false,false);
         } else if (id == R.id.nav_recently) {
 
         } else if (id == R.id.nav_cloud) {
