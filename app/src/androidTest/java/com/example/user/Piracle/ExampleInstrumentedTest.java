@@ -1,4 +1,4 @@
-package com.example.user.piracle;
+package com.example.user.Piracle;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.user.piracle", appContext.getPackageName());
+        assertEquals("com.example.user.Piracle", appContext.getPackageName());
     }
 }

@@ -1,8 +1,9 @@
-package com.example.user.piracle;
+package com.example.user.Piracle;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -87,7 +88,7 @@ public class fileList extends AppCompatActivity {
         filesList = new ArrayList<>();
         names = new ArrayList<>();
         paths = new ArrayList<>();
-        getFileDirectory(ROOT);
+        getFileDirectory("/storage/emulated/0");
     }
 
     private void getFileDirectory(String path){
@@ -109,7 +110,7 @@ public class fileList extends AppCompatActivity {
             filesMap.put(NAME_ITEM, PRE_LEVEL);
             filesList.add(filesMap);
         }
-
+        Log.d("Tag",path);
         files = new File(path).listFiles();
         for(int i = 0; i < files.length; i++){
             filesMap = new HashMap<>();

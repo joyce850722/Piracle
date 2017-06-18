@@ -1,4 +1,4 @@
-package com.example.user.piracle;
+package com.example.user.Piracle;
 
 import org.junit.Test;
 

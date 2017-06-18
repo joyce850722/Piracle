@@ -1,10 +1,8 @@
-package com.example.user.piracle;
+package com.example.user.Piracle;
 
 /**
  * Created by MIN-HAN on 2017/6/18.
  */
-
-import android.support.v7.app.AppCompatActivity;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -50,8 +48,6 @@ import java.util.List;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
-
-import static com.example.user.piracle.R.layout.activity_piracle;
 
 public class openppt extends Activity
         implements EasyPermissions.PermissionCallbacks {
