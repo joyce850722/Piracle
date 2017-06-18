@@ -9,8 +9,6 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-import com.example.user.piracle.R;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;

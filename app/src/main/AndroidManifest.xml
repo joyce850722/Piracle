@@ -27,7 +27,9 @@
         <activity
             android:name=".fileList"
             android:label="@string/title_activity_file_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".openppt" />
     </application>
 
 </manifest>

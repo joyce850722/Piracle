@@ -53,7 +53,7 @@ import pub.devrel.easypermissions.EasyPermissions;
 
 import static com.example.user.piracle.R.layout.activity_piracle;
 
-public class openppt extends AppCompatActivity
+public class openppt extends Activity
         implements EasyPermissions.PermissionCallbacks {
     GoogleAccountCredential mCredential;
     private TextView mOutputText;
