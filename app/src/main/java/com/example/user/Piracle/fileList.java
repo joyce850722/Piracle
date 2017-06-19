@@ -1,7 +1,11 @@
 package com.example.user.Piracle;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -16,7 +20,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+
 public class fileList extends AppCompatActivity {
+    private static int REQUEST_EXTERNAL_STORAGE = 1;
     private static final String ROOT = "/";
     private static final String PRE_LEVEL = "..";
     public static final int FIRST_ITEM = 0;
@@ -38,6 +46,11 @@ public class fileList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_file_list);
+        int permission = ActivityCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE);
+        ActivityCompat.requestPermissions(this,
+                new String[] {WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE},
+                REQUEST_EXTERNAL_STORAGE
+        );
         initData();
         initView();
     }
@@ -112,6 +125,9 @@ public class fileList extends AppCompatActivity {
         }
         Log.d("Tag",path);
         files = new File(path).listFiles();
+        int permission = ActivityCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE);
+        Log.d("Tag", String.valueOf(permission));
+        Log.d("Tag", String.valueOf(files));
         for(int i = 0; i < files.length; i++){
             filesMap = new HashMap<>();
             names.add(files[i].getName());
