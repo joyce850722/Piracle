@@ -1,8 +1,10 @@
 package com.example.user.Piracle;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,8 +16,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
 
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+
 public class Piracle extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private static int REQUEST_EXTERNAL_STORAGE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +90,8 @@ public class Piracle extends AppCompatActivity
 
         if (id == R.id.nav_setting) {
             // Handle the camera action
+
+
         } else if (id == R.id.nav_open) {
             //初始化Intent物件
             Intent intent = new Intent();
@@ -93,7 +102,8 @@ public class Piracle extends AppCompatActivity
         } else if (id == R.id.nav_recently) {
 
         } else if (id == R.id.nav_cloud) {
-
+            Intent intent = getPackageManager().getLaunchIntentForPackage("com.google.android.apps.docs");
+            startActivity(intent);
         } else if (id == R.id.nav_help) {
 
         }
